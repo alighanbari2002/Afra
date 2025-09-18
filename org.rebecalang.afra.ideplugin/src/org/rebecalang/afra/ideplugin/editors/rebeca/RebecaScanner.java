@@ -31,16 +31,13 @@ public class RebecaScanner extends RuleBasedScanner {
 
 	public RebecaScanner(ColorManager manager)
 	{
-		System.out.println("[Rebeca Scanner] Initializing enhanced syntax highlighting with variable detection...");
+		System.out.println("[Rebeca Scanner] Initializing enhanced syntax highlighting (core language elements only)...");
 		
 		// Create tokens for different categories
 		IToken keywordToken = new Token(RebecaTextAttribute.KEY_WORD.getTextAttribute(manager));
 		IToken typeToken = new Token(RebecaTextAttribute.TYPE.getTextAttribute(manager));
-		IToken classNameToken = new Token(RebecaTextAttribute.CLASS_NAME.getTextAttribute(manager));
-		IToken methodNameToken = new Token(RebecaTextAttribute.METHOD_NAME.getTextAttribute(manager));
 		IToken numberToken = new Token(RebecaTextAttribute.NUMBER.getTextAttribute(manager));
 		IToken builtinToken = new Token(RebecaTextAttribute.BUILTIN_FUNCTION.getTextAttribute(manager));
-		IToken variableToken = new Token(RebecaTextAttribute.VARIABLE.getTextAttribute(manager));
 		IToken defaultToken = new Token(RebecaTextAttribute.DEFAULT.getTextAttribute(manager));
 
 		List<WordRule> rules = new ArrayList<WordRule>();
@@ -76,36 +73,11 @@ public class RebecaScanner extends RuleBasedScanner {
 		}
 		System.out.println("[Rebeca Scanner] Added " + rebecaTypes.length + " types (dark blue)");
 		
-		// Add class names (brown)
-		for (String className : rebecaClasses) {
-			wordRule.addWord(className, classNameToken);
-		}
-		System.out.println("[Rebeca Scanner] Added " + rebecaClasses.length + " class names (brown)");
-		
-		// Add method names (dark green)
-		for (String methodName : rebecaMethods) {
-			wordRule.addWord(methodName, methodNameToken);
-		}
-		System.out.println("[Rebeca Scanner] Added " + rebecaMethods.length + " method names (dark green)");
-		
 		// Add boolean literals (medium blue)
 		for (String literal : rebecaLiterals) {
 			wordRule.addWord(literal, builtinToken);
 		}
 		System.out.println("[Rebeca Scanner] Added " + rebecaLiterals.length + " boolean literals (medium blue)");
-		
-		// Add common variables (dark goldenrod)
-		int variableCount = 0;
-		for (String variable : commonVariables) {
-			wordRule.addWord(variable, variableToken);
-			variableCount++;
-			if (variableCount <= 10) { // Only log first 10 to reduce console noise
-				System.out.println("[Rebeca Scanner] Added variable: " + variable);
-			}
-		}
-		if (variableCount > 10) {
-			System.out.println("[Rebeca Scanner] ... and " + (variableCount - 10) + " more variables");
-		}
 		
 		rules.add(wordRule);
 
@@ -134,9 +106,9 @@ public class RebecaScanner extends RuleBasedScanner {
 		setRules(result);
 		
 		System.out.println("[Rebeca Scanner] Enhanced scanner initialized with " + rules.size() + " rules");
-		System.out.println("[Rebeca Scanner] Core language elements: " + 
+		System.out.println("[Rebeca Scanner] Active language elements: " + 
 			(rebecaKeywords.length + rebecaConstructs.length + rebecaTypes.length + rebecaLiterals.length) + " tokens");
-		System.out.println("[Rebeca Scanner] Advanced pattern detection: Future enhancement with context-aware parsing");
+		System.out.println("[Rebeca Scanner] Hardcoded arrays removed - ready for pattern-based detection implementation");
 	}
 	
 	// Custom detector for numbers
