@@ -5,7 +5,7 @@ import org.rebecalang.afra.ideplugin.Activator;
 import org.rebecalang.afra.ideplugin.editors.GeneralPreferenceInitializer;
 
 public class RebecaPreferenceInitializer extends GeneralPreferenceInitializer {
-
+	//
 	public void initializeDefaultPreferences() {
 		IPreferenceStore preferences = Activator.getDefault().getPreferenceStore();
 		setDefaultAttr(preferences, "Rebeca.SingleLineComment", "00,128,128");
