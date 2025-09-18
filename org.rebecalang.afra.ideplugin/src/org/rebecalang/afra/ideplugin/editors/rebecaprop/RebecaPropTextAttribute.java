@@ -17,10 +17,12 @@ public class RebecaPropTextAttribute extends GeneralTextAttribute {
 		
 	public static void init()
 	{
+		System.out.println("[Property Syntax] Initializing property file syntax highlighting...");
 		readColor(SINGLE_LINE_COMMENT, "RebecaProp.SingleLineComment");
 		readColor(MULTI_LINE_COMMENT, "RebecaProp.MultiLineComment");
 		readColor(STRING, "RebecaProp.String");
 		readColor(DEFAULT, "RebecaProp.Default");
 		readColor(KEYWORD, "RebecaProp.KeyWord");
+		System.out.println("[Property Syntax] Property file syntax highlighting initialized successfully!");
 	}
 }

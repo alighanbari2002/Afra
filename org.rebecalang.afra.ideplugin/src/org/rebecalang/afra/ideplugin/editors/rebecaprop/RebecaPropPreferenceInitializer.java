@@ -17,10 +17,13 @@ public class RebecaPropPreferenceInitializer extends GeneralPreferenceInitialize
 		/*Preferences preferences = RebecaUIPlugin.getPlugin()
 				.getPluginPreferences();
 		*/
-		setDefaultAttr(preferences, "RebecaProp.SingleLineComment", "00,128,128");
-		setDefaultAttr(preferences, "RebecaProp.MultiLineComment", "00,128,128");
-		setDefaultAttr(preferences, "RebecaProp.String", "00,00,128");
-		setDefaultAttr(preferences, "RebecaProp.Default", "00,00,00");
-		setDefault(preferences, "RebecaProp.KeyWord", "128,00,128", true);
+		// Enhanced property file colors (light mode friendly)
+		setDefaultAttr(preferences, "RebecaProp.SingleLineComment", "00,128,128"); // Teal comments
+		setDefaultAttr(preferences, "RebecaProp.MultiLineComment", "00,128,128");  // Teal comments
+		setDefaultAttr(preferences, "RebecaProp.String", "00,00,128");             // Blue strings
+		setDefaultAttr(preferences, "RebecaProp.Default", "00,00,00");             // Black default
+		setDefault(preferences, "RebecaProp.KeyWord", "128,00,128", true);         // Purple keywords
+		
+		System.out.println("[Property Preferences] Enhanced property file color scheme initialized");
 	}
 }
